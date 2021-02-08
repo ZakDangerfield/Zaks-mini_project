@@ -121,8 +121,8 @@ Your option: """)
             snacks[change] = changeto
             print (f"here is the new improved snacks list {snacks}")
             print("press any key for menu")
-            resulttt = input()
-            if resulttt == "0":
+            result = input()
+            if result == "0":
                 clear()
                 menu()
             else:
@@ -141,8 +141,8 @@ Your option: """)
             drinks.pop(removal)
         print (f"Selected object has been removed: {drinks}")
         print("press any keyfor menu")
-        resulttt = input()
-        if resulttt == "0":
+        result = input()
+        if result == "0":
             clear()
             menu()
         else:

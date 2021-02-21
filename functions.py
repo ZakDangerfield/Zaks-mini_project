@@ -1,8 +1,29 @@
+import sys
+import os
 import csv
 import random
 import tempfile
 import pandas as pd
 from csv import DictWriter
+def clear():
+    	os.system( 'cls' )
+
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO Couriers (courier, courier_phone) VALUES (%s, %s)"
+val = ("Sab", "01010101")
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
+
+
+
+
+
+
 
 def finnish():
     finnish = input("Your order has been updated. Press any key to return to the orders edit menu.")
@@ -27,12 +48,13 @@ def view_order():
         print(f'Processed {line_count} lines.')
 
 def add_order():
-    order_details = ['Customer name', 'Customer address', 'Customer phone number', 'Order date'] 
-    Customer_name = input("Please enter the customer name: ")
+    order_details = ['Order number', 'Customer name', 'Customer address', 'Customer phone number', 'Order date'] 
+    order_number = (random.randint(100000,999990))
+    customer_name = input("Please enter the customer name: ")
     customer_address = input("Please enter the first line of the addrress and postcode: ")
     customer_phone_number = input("Please enter the customer phone number: ")
     order_date = input("Please enter date of purchase: ")
-    order = [{'Customer name': Customer_name, 'Customer address': customer_address, 'Customer phone number': customer_phone_number, 'Order date': order_date}]
+    order = [{'Order number': order_number, 'Customer name': customer_name, 'Customer address': customer_address, 'Customer phone number': customer_phone_number, 'Order date': order_date}]
     print (f"The order has been placed, \n Please review the order: \n {order}")
     with open('order.csv', 'a+', newline='') as csvfile: 
         writer = csv.DictWriter(csvfile, fieldnames = order_details) 
@@ -100,3 +122,15 @@ Exit back to the Orders menu [5]
                     order_menu()
     return Collumn_edit 
 
+
+def remove_order():
+        # reading the csv file 
+    full_order_list = pd.read_csv("order.csv") 
+    print (full_order_list)
+    print (" ")
+    print ("The order number is located on the first collumn: ")
+    removal = input("Please enter the order number you would like to remove: ")
+    # making data frame from csv file 
+    data = pd.read_csv("order.csv", index_col = "Customer name" ) 
+# dropping passed values 
+    data.drop([removal,"courtney"], inplace = True) 

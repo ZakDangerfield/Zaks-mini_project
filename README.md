@@ -1,6 +1,6 @@
 # Zaks-mini_project
-The best snacks app the world has ever seen.. kind of
+
+This is my demonstration of a fully functional and user friendly Drinks app.
+Each weeks version of the app is able to store data into different files and the most recent app, is storing data into an SQL table.
 
 This is my mini project.
-
-Week 3 is now in progress using some functions from an alternative py file.
